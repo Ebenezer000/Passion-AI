@@ -12,7 +12,7 @@ const API_KEY = process.env.GOOGLE_API_KEY || 'AIzaSyAXnoGO8DTABahT5veICnw2DOaL_
 
 // Middleware for CORS
 app.use(cors({
-    origin: 'passion-ai.vercel.app',  // Allow requests from this frontend URL
+    origin: 'passion-ai.vercel.app', // Allow requests from this frontend URL
     methods: 'GET,POST,PUT,DELETE',
     credentials: true // Allow cookies if needed
 }));

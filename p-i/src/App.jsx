@@ -14,7 +14,7 @@ const Preloader = () => {
     width:100%;
     height:100vh;
     color:#fff;
-    background-color: #7D8D7E;
+    background-color: #6D65C8;
 `;
 
   return (
