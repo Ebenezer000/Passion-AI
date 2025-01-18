@@ -20,7 +20,7 @@ app.use(cors({
 app.use(express.json());
 
 // POST route to handle AI requests
-app.post('/chat', async (req, res) => {
+app.post('/', async (req, res) => {
     const { prompt } = req.body;
 
     if (!prompt) {

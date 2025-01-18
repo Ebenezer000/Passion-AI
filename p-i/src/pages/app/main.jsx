@@ -59,7 +59,7 @@ const ChatApp = () => {
         setChatlog((prevChatlog) => [...prevChatlog, newMessage]);
 
         try {
-            const response = await axios.post('https://passion-ai.onrender.com/chat', {
+            const response = await axios.post('https://passion-ai.onrender.com', {
                 prompt: input, // Send user input as prompt
             });
 
