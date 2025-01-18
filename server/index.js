@@ -19,6 +19,11 @@ app.use(cors({
 
 app.use(express.json());
 
+// GET route for the root path
+app.get('/', (req, res) => {
+    res.send('Server is running. Use POST requests to interact with AI.');
+});
+
 // POST route to handle AI requests
 app.post('/', async (req, res) => {
     const { prompt } = req.body;
