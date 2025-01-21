@@ -26,6 +26,7 @@ export const MainContainer = styled.main`
         flex-direction: column;
         justify-content: space-between;
         background: #F9F9F9;
+        transition: opacity 1s ease, visibility 1s ease;
 
         .sidemenu_header{
             display: flex;
@@ -77,6 +78,82 @@ export const MainContainer = styled.main`
         h1{
             color: #000;
         }
+    }
+    .sidemenu_none{
+        border:1px solid #e3e3e3;
+        width:240px;
+        /* height:; */
+        /* overflow-y: scroll; */
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #F9F9F9;
+
+        .sidemenu_header{
+            display: flex;
+            flex-direction: column;
+            gap:30px;
+        }
+        .sidemenu_buttons{
+            display: flex;
+            justify-content: space-between;
+        }
+        .new_chat{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            height: auto;
+            border:1px solid #ececec;
+            border-radius: 10px;
+            width:100%;
+            padding:4%;
+            padding-left:4%;
+            transition: ease-in 0.21s;
+
+            img{
+                display: none;
+            }
+            
+            span{
+                font-size: 25px;
+            }
+            h2{
+                font-weight: normal;
+                font-size: 16px;
+            }
+        }
+        .new_chat:hover{
+            background-color: #ECECEC;
+            img{
+                display: block;
+                width: 70%;
+            }
+        }
+        .sidemenu_footer{
+            /* display: flex;
+            align-items: end;
+            border:1px solid; */
+        }
+
+        h1{
+            color: #000;
+        }
+    }
+    .open_sidebar{
+        margin-right: 10%;
+    }
+    .open_sidebar_none{
+        display: none;
+    }
+    .logout{
+        cursor: pointer;
+        display: flex;
+        gap:5px;
     }
     .chatbox{
         display: flex;

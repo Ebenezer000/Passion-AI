@@ -5,6 +5,7 @@ import vec1 from '../../assets/closesidebar.svg'
 import vec2 from '../../assets/arrowicon.svg'
 import vec3 from '../../assets/attachfileicon.svg'
 import vec4 from '../../assets/proceedarrowicon.svg'
+import logout from '../../assets/logout-svgrepo-com.svg'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
@@ -16,13 +17,13 @@ const ChatApp = () => {
     const [input, setInput] = useState('')
     const [chatlog, setChatlog] = useState([])
     const [chatHistory, setChatHistory] = useState([]);
-    const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
     const [loading, setLoading] = useState(false); // Loading state
     const [loggedIn, setLoggedIn] = useState(true); // User logged-in state
 
     // useNavigate
     const navigate = useNavigate()
-    
+
 
     const handleInputChange = (e) => {
         setInput(e.target.value); // Updates the input state
@@ -40,7 +41,7 @@ const ChatApp = () => {
         setChatlog([]); // Clear current chat log
         setChatHistory([]); // Clear chat history
         setInput(''); // Clear input field
-        
+
         // Redirect to the homepage ("/")
         navigate('/');
     };
@@ -72,7 +73,7 @@ const ChatApp = () => {
             ]);
         } catch (error) {
             console.error('Error:', error);
-        } finally{
+        } finally {
             setLoading(false);
             setInput(''); // Clear the input field
         }
@@ -81,17 +82,17 @@ const ChatApp = () => {
 
     return (
         <MainContainer>
-            <aside className={`sidemenu ${isSidebarVisible ? '' : 'hidden'}`}>
+            <aside className={`sidemenu ${isSidebarVisible ? 'sidemenu_none' : ''}`}>
                 <div className='sidemenu_header'>
                     <div className='sidemenu_buttons'>
-                        <button onClick={toggleSidebar}><img src={vec1} alt='' /></button>
+                        <button title='Sidebar' onClick={toggleSidebar}><img src={vec1} alt='' /></button>
                         {/* <h1>Aside</h1> */}
-                        <button onClick={handleNewChat}><img src={vec} alt='' /></button>
+                        <button title='Newchat' onClick={handleNewChat}><img src={vec} alt='' /></button>
                     </div>
                     <div>
                         <button className='new_chat' onClick={handleNewChat}>
                             {/* <span>+</span> */}
-                            <h2>Chat</h2>
+                            <h2>New Chat</h2>
                             <button><img src={vec} alt='' /></button>
                         </button>
                     </div>
@@ -105,7 +106,7 @@ const ChatApp = () => {
                     ) : (
                         chatHistory.map((session, idx) => (
                             <div key={idx} className='history_item'>
-                                <button onClick={() => setChatlog(session)}>
+                                <button title='Reopen' onClick={() => setChatlog(session)}>
                                     {/* Chat {idx + 1} */}
                                     {session.length > 0
                                         ? session[session.length - 1].text.split(' ').slice(0, 5).join(' ') + '...'
@@ -117,7 +118,7 @@ const ChatApp = () => {
                         ))
                     )}
                 </div>
-                <div className='sidemenu_footer'>
+                {/* <div className='sidemenu_footer'>
                     <button>
                         <div><img src="" alt="" /></div>
                         <div>
@@ -125,17 +126,19 @@ const ChatApp = () => {
                             <p>coming soon ...</p>
                         </div>
                     </button>
-                </div>
+                </div> */}
                 {loggedIn && (
-                        <button onClick={handleLogout}>
-                            <h1>Log out</h1>
-                        </button>
-                    )}
+                    <span title='logout' className='logout' onClick={handleLogout}>
+                        <img src={logout} alt="" />
+                        <h1>Log out</h1>
+                    </span>
+                )}
             </aside>
             {/* main chat */}
             <div className='chatbox'>
                 <div className='chatbox_header'>
                     <div className='chatbox_logo'>
+                        <button title='Sidebar' className={`open_sidebar ${isSidebarVisible ? '' : 'open_sidebar_none'}`} onClick={toggleSidebar}><img src={vec1} alt='' /></button>
                         <h2>PassionAI</h2>
                         <img src={vec2} alt="" />
                     </div>
